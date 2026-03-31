@@ -13,12 +13,11 @@ def normalize_username(name: str) -> str:
     - Strip leading/trailing underscores.
     """
     name = name.strip().lower()
-    name = re.sub(r'\s+', '_', name)
-    name = re.sub(r'[^a-z0-9_]', '', name)
-    name = re.sub(r'_+', '_', name)
-    name = name.strip('_')
+    name = name.replace(" ", "_")
+    name = re.sub(r"[^a-z0-9_]", "", name)
+    name = re.sub(r"_+", "_", name)
+    name = name.strip("_")
     return name
-
 
 
 def build_slug(title: str) -> str:
