@@ -12,7 +12,13 @@ def normalize_username(name: str) -> str:
     - Collapse repeated underscores into one underscore.
     - Strip leading/trailing underscores.
     """
-    raise NotImplementedError("Implement with Copilot code completion")
+    name = name.strip().lower()
+    name = re.sub(r'\s+', '_', name)
+    name = re.sub(r'[^a-z0-9_]', '', name)
+    name = re.sub(r'_+', '_', name)
+    name = name.strip('_')
+    return name
+
 
 
 def build_slug(title: str) -> str:
